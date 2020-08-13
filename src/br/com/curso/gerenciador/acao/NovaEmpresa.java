@@ -1,33 +1,22 @@
-package br.com.curso.gerenciador.servlet;
+package br.com.curso.gerenciador.acao;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.scenario.effect.impl.sw.sse.SSERendererDelegate;
+import br.com.curso.gerenciador.modelo.Banco;
+import br.com.curso.gerenciador.modelo.Empresa;
 
-/**
- * Servlet implementation class NovaEmpresaServlet
- */
-@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
-	
+public class NovaEmpresa {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		System.out.println("Cadastrando nova Empresa ");
-		//PrintWriter out = response.getWriter();
 		
 		String nomeEmpresa = request.getParameter("nome");
 		String paramDataAbertura = request.getParameter("data");
@@ -48,14 +37,8 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 		
-		// Chamar o JSP com código de vizualização
-//		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas");
-//		request.setAttribute("empresa", empresa.getNome());
-//		rd.forward(request, response);
-		
 		request.setAttribute("empresa", empresa.getNome());
-		response.sendRedirect("listaEmpresas");
-		
-	}
+		response.sendRedirect("entrada?acao=listaEmpresa");
 
+	}
 }
