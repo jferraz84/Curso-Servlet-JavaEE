@@ -85,7 +85,7 @@ public class Banco {
 	public Usuario existeUsuario(String login, String senha) {
 		
 		for (Usuario usuario : listaUsuarios) {
-			if (usuario.ehIgual(senha, senha)) {
+			if (usuario.ehIgual(login, senha)) {
 				return usuario;
 			}
 		}

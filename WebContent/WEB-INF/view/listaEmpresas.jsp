@@ -16,6 +16,14 @@
 </head>
 <body>
 
+	<c:import url="logout-parcial.jsp" />
+
+	Usuario Logado: <strong>${usuarioLogado.login }</strong>
+	
+	<br>
+	<br>
+	<br>
+
 	<c:if test="${not empty empresa }">
 			Empresa ${empresa} Cadastrada com sucesso !
 		</c:if>
