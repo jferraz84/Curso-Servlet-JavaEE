@@ -18,7 +18,7 @@ import br.com.curso.gerenciador.acao.NovaEmpresa;
 import br.com.curso.gerenciador.acao.NovoFormEmpresa;
 import br.com.curso.gerenciador.acao.RemoveEmpresa;
 
-@WebServlet("/entrada")
+//@WebServlet(urlPatterns = "/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,14 +27,14 @@ public class UnicaEntradaServlet extends HttpServlet {
 		
 		String paramAcao = request.getParameter("acao");
 		
-		HttpSession sessao = request.getSession();	
-		boolean usuarioNaoLogado = (sessao.getAttribute("usuarioLogado") == null);
-		boolean ehAcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
-		
-		if (ehAcaoProtegida && usuarioNaoLogado) {
-			response.sendRedirect("entrada?acao=LoginForm");
-			return;
-		}
+//		HttpSession sessao = request.getSession();	
+//		boolean usuarioNaoLogado = (sessao.getAttribute("usuarioLogado") == null);
+//		boolean ehAcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
+//		
+//		if (ehAcaoProtegida && usuarioNaoLogado) {
+//			response.sendRedirect("entrada?acao=LoginForm");
+//			return;
+//		}
 
 		// acao = CONTROLLER
 
